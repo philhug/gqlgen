@@ -179,7 +179,7 @@ func (c *wsConnection) init() bool {
 			ctx, err := c.InitFunc(c.ctx, c.initPayload)
 			if err != nil {
 				c.sendConnectionError(err.Error())
-				c.close(websocket.CloseNormalClosure, "terminated")
+				c.close(websocket.ClosePolicyViolation, "terminated")
 				return false
 			}
 			c.ctx = ctx
